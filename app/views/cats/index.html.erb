@@ -21,8 +21,10 @@
         <td><%= cat.breed %></td>
         <td><%= cat.declawed %></td>
         <td><%= link_to 'Show', cat %></td>
-        <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
-        <td><%= link_to 'Adopt', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
+          <td><%= link_to 'Adopt', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,5 +32,7 @@
 
 <br>
 
-<%= link_to 'New Cat', new_cat_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Cat', new_cat_path %>
+<% end %>
 <%= link_to 'Home page', static_home_path %>
