@@ -20,5 +20,7 @@
   <%= @cat.declawed %>
 </p>
 
-<%= link_to 'Edit', edit_cat_path(@cat) %> |
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_cat_path(@cat) %> |
+<% end %>
 <%= link_to 'Back', cats_path %>
